@@ -13,7 +13,7 @@ app.set('view engine', 'hbs')
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost/restaurant-list')
+mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 // get status of connection
 const db = mongoose.connection
 // set action of connection
