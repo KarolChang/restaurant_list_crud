@@ -1,29 +1,37 @@
 {{!-- Navbar --}}
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Restaurant List</a>
+  <a class="navbar-brand" href="#" style="margin-left: 20px;">Restaurant List</a>
 </nav>
 
 {{!-- Search bar + Restaurant List --}}
-<div class="container">
+<div class=" container mt-5 justify-content-center">
+  {{!-- Create Button --}}
+  <a href="./restaurant/create">Create Your Restaurant List!</a>
   {{!-- Search bar --}}
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username"
-      aria-describedby="button-addon2" name:"q">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+  <div class="row col-8" style="margin: 0 auto;">
+    <div class="input-group mb-3" style="max-width:700px;">
+      <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username"
+        aria-describedby="button-addon2" name:"q" style="display:inline; width:200px;">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+      </div>
     </div>
   </div>
   {{!-- Restaurant List --}}
   <div class="container">
     <div class="row">
-      <div class="col-4">
+      {{#each restaurant}}
+      <div class="col-4 mt-3 mr-2">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">R Name</h5>
+          <img class="card-img-top" src="{{this.image}}" alt="Card image cap" style="height: 200px;">
+          <div class="card-body" style="min-height:150px;">
+            <h5 class="card-title">{{this.name}}</h5>
+            <h5 class="card-title-en">{{this.name_en}}</h5>
+            <h5 class="card-category">{{this.category}}</h5>
           </div>
         </div>
       </div>
+      {{/each}}
     </div>
   </div>
 </div>

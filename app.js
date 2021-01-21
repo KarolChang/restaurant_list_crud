@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
+const Restaurant = require('./models/restaurant.js')
 
 // set handlebars engine
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
@@ -26,8 +27,25 @@ db.once('open', () => {
 })
 
 // set route
+// put default info to index-page
 app.get('/', (req, res) => {
-  res.render('index')
+  Restaurant.find()
+    .lean()
+    .then(restaurant => res.render('index', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+// create restaurant info
+app.get('/restaurant/create', (req, res) => {
+  res.render('create')
+})
+
+// storage new info to database
+app.post('/restaurant', (req, res) => {
+  const restaurantList = req.body
+  return Restaurant.create(restaurantList)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 // listen app server
