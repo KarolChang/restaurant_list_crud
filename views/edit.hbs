@@ -1,0 +1,28 @@
+{{!-- Form --}}
+<form action='/restaurant/{{restaurant._id}}/edit' method="POST">
+  <div class="form-group">
+    <label for="name">餐廳名稱(中文)</label>
+    <input type="text" class="form-control" id="name" placeholder="ex: 麥當勞" name="name" value="{{restaurant.name}}">
+  </div>
+  <div class="form-group">
+    <label for="name_en">餐廳名稱(英文)</label>
+    <input type="text" class="form-control" id="name_en" placeholder="ex: McDonald" name="name_en"
+      value="{{restaurant.name_en}}">
+  </div>
+  <div class="form-group">
+    <label for="category">餐廳分類</label>
+    <select class="form-control" id="category" name="category" value="{{restaurant.category}}">
+      <option>義式餐廳</option>
+      <option>日本料理</option>
+      <option>美式餐廳</option>
+      <option>中東料理</option>
+      <option>咖啡廳</option>
+      <option>酒吧</option>
+    </select>
+  </div>
+  {{!-- Save Button --}}
+  <button type="submit">Save</button>
+</form>
+
+{{!-- Back Link --}}
+<a href="/">Back</a>

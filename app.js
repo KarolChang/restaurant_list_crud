@@ -49,13 +49,38 @@ app.post('/restaurant', (req, res) => {
 })
 
 // read details of the restaurant
-app.get('/restaurant/:id/detail', (req, res) => {
+app.get('/restaurant/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
     .then(restaurant => res.render('detail', { restaurant }))
     .catch(error => console.log(error))
 })
+
+// edit page
+app.get('/restaurant/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+// edit infos of the restaurant
+app.post('/restaurant/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.name = req.body.name
+      restaurant.name_en = req.body.name_en
+      restaurant.category = req.body.category
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurant/${id}`))
+    .catch(error => console.log(error))
+})
+
+
 
 // listen app server
 app.listen(3000, () => {
