@@ -6,5 +6,10 @@
 {{!-- Edit Link --}}
 <a href="/restaurant/{{restaurant._id}}/edit">edit</a>
 
+{{!-- Delete Button --}}
+<form action="/restaurant/{{restaurant._id}}/delete" method="POST" style="display:inline">
+  <button type="submit">delete</button>
+</form>
+
 {{!-- Back Link --}}
 <a href="/">Back</a>

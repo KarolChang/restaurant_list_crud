@@ -27,6 +27,10 @@
             <a href="/restaurant/{{this._id}}">detail</a>
             {{!-- Edit Link --}}
             <a href="/restaurant/{{this._id}}/edit">edit</a>
+            {{!-- Delete Button --}}
+            <form action="/restaurant/{{this._id}}/delete" method="POST" style="display:inline">
+              <button type="submit">delete</button>
+            </form>
           </div>
         </div>
       </div>
