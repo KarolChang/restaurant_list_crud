@@ -48,6 +48,15 @@ app.post('/restaurant', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// read details of the restaurant
+app.get('/restaurant/:id/detail', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('detail', { restaurant }))
+    .catch(error => console.log(error))
+})
+
 // listen app server
 app.listen(3000, () => {
   console.log('App server is listening on http://localhost:3000')

@@ -1,8 +1,3 @@
-{{!-- Navbar --}}
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#" style="margin-left: 20px;">Restaurant List</a>
-</nav>
-
 {{!-- Search bar + Restaurant List --}}
 <div class=" container mt-5 justify-content-center">
   {{!-- Create Button --}}
@@ -28,6 +23,8 @@
             <h5 class="card-title">{{this.name}}</h5>
             <h5 class="card-title-en">{{this.name_en}}</h5>
             <h5 class="card-category">{{this.category}}</h5>
+            {{!-- Detail Link --}}
+            <a href="/restaurant/{{this._id}}/detail">detail</a>
           </div>
         </div>
       </div>
