@@ -2,6 +2,11 @@
 <div class="container m-2">
   <form action='/restaurant/{{restaurant._id}}/edit' method="POST">
     <div class="form-group">
+      <label for="image">餐廳圖片</label>
+      <input type="text" class="form-control" id="name" placeholder="ex: https...jpg" name="image"
+        value="{{restaurant.image}}">
+    </div>
+    <div class="form-group">
       <label for="name">餐廳名稱(中文)</label>
       <input type="text" class="form-control" id="name" placeholder="ex: 麥當勞" name="name" value="{{restaurant.name}}">
     </div>
