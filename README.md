@@ -20,7 +20,7 @@
 
 ## Installing - 專案安裝流程
 1. 開啟終端機，執行以下指令 :
-> `git clone https://github.com/KarolChang/rubbish_talk_generator.git`
+> `git clone https://github.com/KarolChang/restaurant_list_crud.git`
 
 2. 進入專案資料夾
 > `cd rubbish_talk_generator`
