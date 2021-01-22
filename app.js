@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
 const Restaurant = require('./models/restaurant.js')
+const restList = require('./restaurant.json')
 
 // set handlebars engine
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
@@ -40,6 +41,7 @@ app.get('/restaurant/create', (req, res) => {
   res.render('create')
 })
 
+
 // storage new info to database
 app.post('/restaurant', (req, res) => {
   const restaurantList = req.body
@@ -47,6 +49,14 @@ app.post('/restaurant', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+
+// search function
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  const restaurant = restList.results.filter((restaurant => restaurant.name.toLowerCase().includes(keyword.toLowerCase())))
+  res.render('index', { restaurant: restaurant, keyword: keyword })
+})
+
 
 // read details of the restaurant
 app.get('/restaurant/:id', (req, res) => {
@@ -74,6 +84,11 @@ app.post('/restaurant/:id/edit', (req, res) => {
       restaurant.name = req.body.name
       restaurant.name_en = req.body.name_en
       restaurant.category = req.body.category
+      restaurant.location = req.body.location
+      restaurant.phone = req.body.phone
+      restaurant.google_map = req.body.google_ma
+      restaurant.rating = req.body.rating
+      restaurant.description = req.body.description
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurant/${id}`))

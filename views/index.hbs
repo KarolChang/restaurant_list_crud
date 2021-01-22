@@ -1,15 +1,27 @@
 {{!-- Search bar + Restaurant List --}}
 <div class=" container mt-5 justify-content-center">
-  {{!-- Create Button --}}
-  <a href="./restaurant/create">Create Your Restaurant List!</a>
-  {{!-- Search bar --}}
-  <div class="row col-8" style="margin: 0 auto;">
-    <div class="input-group mb-3" style="max-width:700px;">
-      <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username"
-        aria-describedby="button-addon2" name:"q" style="display:inline; width:200px;">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
-      </div>
+  {{!-- Create Link + Search bar --}}
+  <div class="row mb-3 align-items-center"
+    style="margin: 0 auto;padding:20px 150px;background-color:coral;border-radius:8px;">
+    {{!-- Create Button --}}
+    <div class="row col-4" style="height:40px;">
+      <button type="button" class="btn btn-dark">
+        <a href="./restaurant/create" style="text-decoration:none;color:white; font-weight:bold;">Create Your Restaurant
+          List!</a>
+      </button>
+    </div>
+    {{!-- Search bar --}}
+    <div class="row col-8 ml-5">
+      <form action="/search">
+        <div class="input-group" style="max-width:700px;">
+          <input type="text" class="form-control" placeholder="Search..." aria-label="Restaurant Name..."
+            aria-describedby="button-addon2" name="keyword" style="display:inline; width:200px;" value="{{keyword}}">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="search-button"><i
+                class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
   {{!-- Restaurant List --}}
@@ -21,15 +33,22 @@
           <img class="card-img-top" src="{{this.image}}" alt="Card image cap" style="height: 200px;">
           <div class="card-body" style="min-height:150px;">
             <h5 class="card-title">{{this.name}}</h5>
-            <h5 class="card-title-en">{{this.name_en}}</h5>
-            <h5 class="card-category">{{this.category}}</h5>
+            <h6 class="card-category"><i class="fas fa-utensils"
+                style="color:deeppink; margin-right:1em;"></i>{{this.category}}</h6>
             {{!-- Detail Link --}}
-            <a href="/restaurant/{{this._id}}">detail</a>
+            <button type="button" class="btn btn-info">
+              <a href="/restaurant/{{this._id}}"
+                style="text-decoration:none;color:black;font-family: 'Balsamiq Sans', cursive;">detail</a>
+            </button>
             {{!-- Edit Link --}}
-            <a href="/restaurant/{{this._id}}/edit">edit</a>
+            <button type="button" class="btn btn-success">
+              <a href="/restaurant/{{this._id}}/edit"
+                style="text-decoration:none;color:white;font-family: 'Balsamiq Sans', cursive;">edit</a>
+            </button>
             {{!-- Delete Button --}}
             <form action="/restaurant/{{this._id}}/delete" method="POST" style="display:inline">
-              <button type="submit">delete</button>
+              <button type="submit" class="btn btn-danger"
+                style="font-family: 'Balsamiq Sans', cursive;">delete</button>
             </form>
           </div>
         </div>

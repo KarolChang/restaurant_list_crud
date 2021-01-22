@@ -1,15 +1,43 @@
-{{!-- Detail info --}}
-<h1>{{ restaurant.name}}</h1>
-<h2>{{ restaurant.name_en}}</h2>
-<h3>{{ restaurant.category}}</h3>
+<div class="row">
+  {{!-- Image --}}
+  <div class="col-6">
+    <img src="{{ restaurant.image }}" alt="image" style="max-width:600px;">
+  </div>
+  {{!-- Detail info --}}
+  <div class=" col-6">
+    {{!-- Info --}}
+    <h1>{{ restaurant.name}}</h1>
+    <h2>{{ restaurant.name_en}}</h2>
+    <h6 class="res-category"><i class="fas fa-utensils"
+        style="color:deeppink; margin-right:1em;"></i>{{restaurant.category}}
+    </h6>
+    <h6 class="res-location"><i class="fas fa-store"
+        style="color:deeppink; margin-right:1em;"></i>{{restaurant.location}}
+    </h6>
+    <h6 class="res-phone"><i class="fas fa-phone" style="color:deeppink; margin-right:1em;"></i>{{restaurant.phone}}
+    </h6>
+    <h6 class="res-google-map"><i class="fas fa-map-marker-alt" style="color:deeppink; margin-right:1em;"></i><a
+        href="{{restaurant.google_map}}">{{restaurant.google_map}}</a>
+    </h6>
+    <h6 class="res-rating"><i class="fas fa-star" style="color:deeppink; margin-right:1em;"></i>{{restaurant.rating}}
+    </h6>
+    <p class="res-description"><i class="fas fa-comment"
+        style="color:deeppink; margin-right:1em;"></i>{{restaurant.description}}
+    </p>
 
-{{!-- Edit Link --}}
-<a href="/restaurant/{{restaurant._id}}/edit">edit</a>
+    {{!-- Edit Link --}}
+    <button type="button" class="btn btn-success">
+      <a href="/restaurant/{{restaurant._id}}/edit"
+        style="text-decoration:none;color:white;font-family: 'Balsamiq Sans', cursive;">edit</a>
+    </button>
+    {{!-- Delete Button --}}
+    <form action="/restaurant/{{restaurant._id}}/delete" method="POST" style="display:inline">
+      <button type="submit" class="btn btn-danger" style="font-family: 'Balsamiq Sans', cursive;">delete</button>
+    </form>
 
-{{!-- Delete Button --}}
-<form action="/restaurant/{{restaurant._id}}/delete" method="POST" style="display:inline">
-  <button type="submit">delete</button>
-</form>
-
-{{!-- Back Link --}}
-<a href="/">Back</a>
+    {{!-- Back Link --}}
+    <button type="button" class="btn btn-warning">
+      <a href="/" style="text-decoration:none;color:black;font-family: 'Balsamiq Sans', cursive;">Back</a>
+    </button>
+  </div>
+</div>
